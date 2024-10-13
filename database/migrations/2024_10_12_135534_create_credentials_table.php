@@ -12,7 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('credentials', function (Blueprint $table) {
-            $table->id();
+            $table->ulid('id')->primary();
+
+            $table->string('name');
+            $table->json('type');
+            $table->text('value');
+            $table->foreignUlid('user_id')->index()->constrained('users')->cascadeOnDelete();
             $table->timestamps();
         });
     }
