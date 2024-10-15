@@ -8,5 +8,5 @@ use Illuminate\Http\Request;
 
 final class DeleteController
 {
-    //
+    public function __invoke() {}
 }

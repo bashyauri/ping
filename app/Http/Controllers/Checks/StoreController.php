@@ -8,5 +8,5 @@ use Illuminate\Http\Request;
 
 final class StoreController
 {
-    //
+    public function __invoke() {}
 }

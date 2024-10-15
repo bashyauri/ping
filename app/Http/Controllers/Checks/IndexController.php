@@ -8,5 +8,5 @@ use Illuminate\Http\Request;
 
 final class IndexController
 {
-    //
+    public function __invoke() {}
 }

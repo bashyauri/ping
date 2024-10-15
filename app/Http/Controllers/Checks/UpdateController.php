@@ -8,5 +8,5 @@ use Illuminate\Http\Request;
 
 final class UpdateController
 {
-    //
+    public function __invoke() {}
 }
