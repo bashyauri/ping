@@ -6,14 +6,14 @@ use App\Models\Service;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
-class ServicePolicy
+final class ServicePolicy
 {
     /**
      * Determine whether the user can view any models.
      */
     public function viewAny(User $user): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -21,7 +21,7 @@ class ServicePolicy
      */
     public function view(User $user, Service $service): bool
     {
-        //
+        return $user->id === $service->user_id;
     }
 
     /**
@@ -29,7 +29,7 @@ class ServicePolicy
      */
     public function create(User $user): bool
     {
-        //
+        return $user->hasVerifiedEmail();
     }
 
     /**
@@ -37,7 +37,7 @@ class ServicePolicy
      */
     public function update(User $user, Service $service): bool
     {
-        //
+        return $user->id === $service->user_id;
     }
 
     /**
@@ -45,22 +45,6 @@ class ServicePolicy
      */
     public function delete(User $user, Service $service): bool
     {
-        //
-    }
-
-    /**
-     * Determine whether the user can restore the model.
-     */
-    public function restore(User $user, Service $service): bool
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can permanently delete the model.
-     */
-    public function forceDelete(User $user, Service $service): bool
-    {
-        //
+        return $user->id === $service->user_id;
     }
 }

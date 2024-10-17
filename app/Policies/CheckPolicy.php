@@ -13,7 +13,7 @@ class CheckPolicy
      */
     public function viewAny(User $user): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -21,7 +21,7 @@ class CheckPolicy
      */
     public function view(User $user, Check $check): bool
     {
-        //
+        return $check->service->user_id === $user->id;
     }
 
     /**
@@ -29,7 +29,7 @@ class CheckPolicy
      */
     public function create(User $user): bool
     {
-        //
+        return $user->hasVerifiedEmail();
     }
 
     /**
@@ -37,7 +37,7 @@ class CheckPolicy
      */
     public function update(User $user, Check $check): bool
     {
-        //
+        return $check->service->user_id === $user->id;
     }
 
     /**
@@ -45,22 +45,6 @@ class CheckPolicy
      */
     public function delete(User $user, Check $check): bool
     {
-        //
-    }
-
-    /**
-     * Determine whether the user can restore the model.
-     */
-    public function restore(User $user, Check $check): bool
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can permanently delete the model.
-     */
-    public function forceDelete(User $user, Check $check): bool
-    {
-        //
+        return $check->service->user_id === $user->id;
     }
 }
