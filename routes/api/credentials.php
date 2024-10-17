@@ -9,6 +9,8 @@ use App\Http\Controllers\Credentials\StoreController;
 use App\Http\Controllers\Credentials\UpdateController;
 use Illuminate\Support\Facades\Route;
 
+
+
 Route::get('/', IndexController::class)->name('index');
 Route::post('/', StoreController::class)->name('store');
 Route::get('{credential}', ShowController::class)->name('show');
