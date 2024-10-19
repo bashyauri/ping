@@ -9,6 +9,8 @@ use App\Http\Controllers\Checks\StoreController;
 use App\Http\Controllers\Checks\UpdateController;
 use Illuminate\Support\Facades\Route;
 
+
+
 Route::get('/', IndexController::class)->name('index');
 Route::post('/', StoreController::class)->name('store');
 Route::get('{checks}', ShowController::class)->name('show');

@@ -10,14 +10,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
-Route::middleware(['auth:sanctum'])->group(
+Route::middleware(['auth:sanctum', 'throttle:api'])->group(
     static function (): void {
         Route::get('/user', static function (Request $request) {
             return $request->user();
         })->name('user');
         Route::prefix('services')->as('services:')->group(base_path(
             path: 'routes/api/services.php',
-        ));
+        ))->middleware(['throttle:100,1']);
         Route::prefix('credentials')->as('credentials:')->group(base_path(
             path: 'routes/api/credentials.php',
         ));
