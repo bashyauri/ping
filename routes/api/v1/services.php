@@ -2,12 +2,14 @@
 
 declare(strict_types=1);
 
-use App\Http\Controllers\Services\DeleteController;
-use App\Http\Controllers\Services\IndexController;
-use App\Http\Controllers\Services\ShowController;
-use App\Http\Controllers\Services\StoreController;
-use App\Http\Controllers\Services\UpdateController;
+
+
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\v1\Services\ShowController;
+use App\Http\Controllers\v1\Services\IndexController;
+use App\Http\Controllers\v1\Services\StoreController;
+use App\Http\Controllers\v1\Services\DeleteController;
+use App\Http\Controllers\v1\Services\UpdateController;
 
 Route::get('/', IndexController::class)->name('index');
 Route::post('/', StoreController::class)->name('store');

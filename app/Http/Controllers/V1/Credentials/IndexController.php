@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers\Checks;
+namespace App\Http\Controllers\V1\Credentials;
 
 use Illuminate\Http\Request;
 
-final class ShowController
+final class IndexController
 {
     public function __invoke() {}
 }
