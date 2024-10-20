@@ -3,11 +3,11 @@
 declare(strict_types=1);
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\V1\Credentials\ShowController;
-use App\Http\Controllers\V1\Credentials\IndexController;
-use App\Http\Controllers\V1\Credentials\StoreController;
-use App\Http\Controllers\V1\Credentials\DeleteController;
-use App\Http\Controllers\V1\Credentials\UpdateController;
+use App\Http\Controllers\V2\Credentials\ShowController;
+use App\Http\Controllers\V2\Credentials\IndexController;
+use App\Http\Controllers\V2\Credentials\StoreController;
+use App\Http\Controllers\V2\Credentials\DeleteController;
+use App\Http\Controllers\V2\Credentials\UpdateController;
 
 
 
