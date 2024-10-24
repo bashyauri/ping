@@ -23,7 +23,7 @@ return new class extends Migration
 
             $table->text('body')->nullable();
 
-            $table->foreignUlid('credential_id')->index()->constrained('credentials')->cascadeOnDelete();
+            $table->foreignUlid('credential_id')->nullable()->index()->constrained('credentials')->cascadeOnDelete();
             $table->foreignUlid('service_id')->index()->constrained('services')->cascadeOnDelete();
             $table->timestamps();
         });

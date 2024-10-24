@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
+use App\Models\Check;
 use App\Models\Service;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -22,6 +23,10 @@ final class DatabaseSeeder extends Seeder
             'name' => 'Bashar Umar',
             'email' => 'basharu83@gmail.com',
         ]);
-        Service::factory()->for($user)->count(1_000)->create();
+        $service = Service::factory()->for($user)->create([
+            'name' => 'Treblle Api',
+            'url' => 'https://api.treblle.com'
+        ]);
+        Check::factory()->for($service)->count(10)->create();
     }
 }

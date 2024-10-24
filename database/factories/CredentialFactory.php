@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Database\Factories;
 
 use App\Enums\CredentialType;
+use App\Enums\ExampleEnum;
 use App\Models\Credential;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;

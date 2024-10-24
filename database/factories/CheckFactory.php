@@ -21,8 +21,8 @@ final class CheckFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->sentence(),
-            'path' => $this->faker->file_path(),
+            'name' => $this->faker->word(),
+            'path' => $this->faker->url(),
             'method' => 'GET',
             'body' => null,
             'headers' => null,
