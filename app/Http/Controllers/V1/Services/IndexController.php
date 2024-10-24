@@ -20,6 +20,8 @@ final class IndexController
             subject: Service::class,
         )->allowedIncludes(
             includes: 'checks',
+        )->allowedFilters(
+            filters: ['url'],
         )->getEloquentBuilder()->simplePaginate(
             perPage: config('app.pagination.limit')
         );
