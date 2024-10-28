@@ -7,7 +7,7 @@ namespace App\Http\Requests\V1\Services;
 use App\Http\Payloads\V1\CreateService;
 use Illuminate\Foundation\Http\FormRequest;
 
-final class StoreRequest extends FormRequest
+final class WriteRequest extends FormRequest
 {
 
     public function rules(): array

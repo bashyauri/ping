@@ -15,7 +15,10 @@ final readonly class MessageResponse implements Responsable
     public function toResponse($request): Response
     {
         return new JsonResponse(
-            data: [],
+            data: [
+                'message' => $this->message,
+            ],
+
             status: $this->status,
         );
     }
