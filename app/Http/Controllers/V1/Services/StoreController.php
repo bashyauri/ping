@@ -27,7 +27,7 @@ final readonly class StoreController
     {
         if (!Gate::allows('create', Service::class)) {
             throw new UnauthorizedException(
-                message: 'You must verify your email before creating a new service.',
+                message: __('services.v1.create.failure'),
                 code: Response::HTTP_FORBIDDEN,
             );
         }
@@ -37,7 +37,7 @@ final readonly class StoreController
             )
         );
         return new MessageResponse(
-            message: 'Your service will be created at the background.',
+            message: __('services.v1.create.success'),
             status: Response::HTTP_ACCEPTED,
         );
     }
