@@ -13,6 +13,6 @@ use App\Http\Controllers\v1\Services\UpdateController;
 
 Route::get('/', IndexController::class)->name('index');
 Route::post('/', StoreController::class)->name('store');
-Route::get('{service}', ShowController::class)->name('show');
+Route::get('{ulid}', ShowController::class)->name('show');
 Route::put('{service}', UpdateController::class)->name('update');
 Route::delete('{service}', DeleteController::class)->name('delete');
