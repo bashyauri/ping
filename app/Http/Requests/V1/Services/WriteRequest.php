@@ -20,7 +20,7 @@ final class WriteRequest extends FormRequest
     public function payload(): CreateService
     {
         return new CreateService(
-            name: $this->string('name')->toString(),
+            name: strip_tags($this->string('name')->toString()),
             url: $this->string('url')->toString(),
             user: $this->user()->id
         );
