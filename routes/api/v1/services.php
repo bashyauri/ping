@@ -10,9 +10,15 @@ use App\Http\Controllers\v1\Services\IndexController;
 use App\Http\Controllers\v1\Services\StoreController;
 use App\Http\Controllers\v1\Services\DeleteController;
 use App\Http\Controllers\v1\Services\UpdateController;
+use Spatie\ResponseCache\Middlewares\CacheResponse;
 
-Route::get('/', IndexController::class)->name('index');
 Route::post('/', StoreController::class)->name('store');
-Route::get('{ulid}', ShowController::class)->name('show');
+Route::middleware([CacheResponse::class])->group(static function (): void {
+    Route::get('/', IndexController::class)->name('index');
+    Route::get('{ulid}', ShowController::class)->name('show');
+});
+
+
+
 Route::put('{service}', UpdateController::class)->name('update');
 Route::delete('{service}', DeleteController::class)->name('delete');
