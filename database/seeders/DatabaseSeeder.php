@@ -27,6 +27,17 @@ final class DatabaseSeeder extends Seeder
             'name' => 'Treblle Api',
             'url' => 'https://api.treblle.com'
         ]);
-        Check::factory()->for($service)->count(10)->create();
+        Check::factory()->for($service)->count(10)->create(
+            [
+                'name' => 'Root Check',
+                'path' => '/',
+                'method' => 'GET',
+                'headers' => [
+                    'User-Agent' => 'Treblle Ping Service 1.0.0',
+                ]
+
+            ]
+
+        );
     }
 }

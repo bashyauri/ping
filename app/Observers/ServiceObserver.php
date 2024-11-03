@@ -43,9 +43,10 @@ class ServiceObserver
             key: CacheKey::User_services->value . '-' . $id,
         );
     }
-    private function forgetService(string $ulid): void {
+    private function forgetService(string $ulid): void
+    {
         Cache::forget(
-            key: CacheKey::Service->value .'-'.$ulid
-        )
+            key: CacheKey::Service->value . '-' . $ulid
+        );
     }
 }

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 use function Pest\Laravel\json;
 
@@ -23,7 +24,11 @@ class Check extends Model
             'parameters' => AsCollection::class
         ];
     }
-    public function credential(): BelongsTo
+    public function reports(): HasMany
+    {
+        return $this->hasMany(related: Report::class, foreignKey: 'check_id');
+    }
+    public function credentials(): BelongsTo
     {
         return $this->belongsTo(related: Credential::class, foreignKey: 'credential_id');
     }
