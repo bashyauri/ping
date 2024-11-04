@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Responses\V1;
 
 use Illuminate\Contracts\Support\Responsable;
@@ -12,6 +14,7 @@ final readonly class MessageResponse implements Responsable
         private readonly string $message,
         private readonly int $status = Response::HTTP_OK
     ) {}
+
     public function toResponse($request): Response
     {
         return new JsonResponse(

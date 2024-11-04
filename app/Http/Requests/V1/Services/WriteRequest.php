@@ -9,7 +9,6 @@ use Illuminate\Foundation\Http\FormRequest;
 
 final class WriteRequest extends FormRequest
 {
-
     public function rules(): array
     {
         return [
@@ -17,6 +16,7 @@ final class WriteRequest extends FormRequest
             'url' => ['required',  'url', 'min:11', 'max:255'],
         ];
     }
+
     public function payload(): CreateService
     {
         return new CreateService(

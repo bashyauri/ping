@@ -18,10 +18,12 @@ final class Service extends Model
     /** @use HasFactory<\Database\Factories\ServiceFactory> */
     use HasFactory, HasUlids;
     protected $fillable = ['name', 'url', 'user_id'];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
     public function checks(): HasMany
     {
         return $this->hasMany(related: Check::class, foreignKey: 'service_id');

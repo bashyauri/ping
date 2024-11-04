@@ -11,6 +11,7 @@ final class CreateService
         private readonly string $url,
         private readonly string $user
     ) {}
+
     public function toArray(): array
     {
         return [

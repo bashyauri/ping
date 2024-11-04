@@ -1,14 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Jobs;
 
 use App\Models\Check;
-use App\Models\Report;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Database\DatabaseManager;
-use Throwable;
+use Illuminate\Foundation\Queue\Queueable;
+use Illuminate\Support\Facades\Http;
 
 class SendPing implements ShouldQueue
 {
@@ -21,7 +21,6 @@ class SendPing implements ShouldQueue
         public readonly Check $check
 
     ) {}
-
 
     public function handle(DatabaseManager $database): void
     {
@@ -54,7 +53,7 @@ class SendPing implements ShouldQueue
 
         $stats = $response->transferStats->getHandlerStats();
         $database->transaction(
-            callback: fn() => $this->check->reports()->create(
+            callback: fn () => $this->check->reports()->create(
                 attributes: [
                     'url' => $stats['url'],
                     'content_type' => $stats['content_type'],
@@ -71,7 +70,7 @@ class SendPing implements ShouldQueue
                     'redirect_time' => $stats['redirect_time_us'],
                     'total_time' => $stats['total_time_us'],
                     'started_at' => $start,
-                    'finished_at' => now()
+                    'finished_at' => now(),
                 ]
             ),
             attempts: 3

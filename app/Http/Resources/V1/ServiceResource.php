@@ -1,9 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Resources\V1;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\Resources\Json\JsonResource;
 use TiMacDonald\JsonApi\JsonApiResource;
 use TiMacDonald\JsonApi\Link;
 
@@ -17,9 +18,10 @@ final class ServiceResource extends JsonApiResource
             'url' => $this->resource->url,
             'created' => new DateResource(
                 resource: $this->resource->created_at,
-            )
+            ),
         ];
     }
+
     public function toLinks(Request $request): array
     {
         return [
@@ -27,14 +29,15 @@ final class ServiceResource extends JsonApiResource
 
         ];
     }
+
     public function toRelationships(Request $request): array
     {
         return [
-            'checks' => fn() => CheckResource::collection(
+            'checks' => fn () => CheckResource::collection(
                 resource: $this->whenLoaded(
                     relationship: 'checks'
                 )
-            )
+            ),
 
         ];
     }

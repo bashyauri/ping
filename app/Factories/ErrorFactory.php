@@ -5,14 +5,13 @@ declare(strict_types=1);
 namespace App\Factories;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Http\Exceptions\HttpResponseException;
-use Throwable;
 use Illuminate\Http\Request;
-use Treblle\ApiResponses\Data\ApiError;
 use JustSteveKing\Tools\Http\Enums\Status;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Exception\MethodNotAllowedException;
+use Throwable;
+use Treblle\ApiResponses\Data\ApiError;
 use Treblle\ApiResponses\Responses\ErrorResponse;
 
 final class ErrorFactory

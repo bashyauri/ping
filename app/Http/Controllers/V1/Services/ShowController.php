@@ -23,12 +23,13 @@ final class ShowController
             key: CacheKey::Service->value . '' . $ulid,
             value: $service = Service::query()->findOrFail($ulid)
         );
-        if (!Gate::allows('view', $service)) {
+        if (! Gate::allows('view', $service)) {
             throw new UnauthorizedException(
                 message: __('services.v1.show.failure'),
                 code: Response::HTTP_FORBIDDEN,
             );
         }
+
         return new JsonResponse(
             data: new ServiceResource(
                 resource: $service

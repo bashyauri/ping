@@ -16,6 +16,7 @@ use Symfony\Component\HttpFoundation\Response;
 final class ReportFactory extends Factory
 {
     protected $model = Report::class;
+
     public function definition(): array
     {
         return [
@@ -40,7 +41,7 @@ final class ReportFactory extends Factory
                 value: $this->faker->numberBetween(
                     int2: 4
                 )
-            )
+            ),
 
         ];
     }

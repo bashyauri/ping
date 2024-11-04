@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Report extends Model
 {
@@ -31,10 +33,12 @@ class Report extends Model
         'finished_at',
 
     ];
+
     public function check(): BelongsTo
     {
         return $this->belongsTo(related: Check::class, foreignKey: 'check_id');
     }
+
     public function casts(): array
     {
         return [

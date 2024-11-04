@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Factories;
 
 use App\Models\Check;
@@ -13,6 +15,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 final class CheckFactory extends Factory
 {
     protected $model = Check::class;
+
     /**
      * Define the model's default state.
      *

@@ -31,7 +31,6 @@ final class User extends Authenticatable
         'email_verified_at',
     ];
 
-
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -54,12 +53,14 @@ final class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
     public function services(): HasMany
     {
         return $this->hasMany(related: Service::class, foreignKey: 'user_id');
     }
+
     public function credentials(): HasMany
     {
-        return   $this->hasMany(related: Credential::class, foreignKey: 'user_id');
+        return $this->hasMany(related: Credential::class, foreignKey: 'user_id');
     }
 }

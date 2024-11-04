@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Observers;
 
 use App\Enums\CacheKey;
@@ -37,12 +39,14 @@ class ServiceObserver
             ulid: $service->id,
         );
     }
+
     protected function forgetServicesForUser(string $id): void
     {
         Cache::forget(
             key: CacheKey::User_services->value . '-' . $id,
         );
     }
+
     private function forgetService(string $ulid): void
     {
         Cache::forget(

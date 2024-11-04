@@ -19,7 +19,6 @@ class UserFactory extends Factory
      */
     protected $model = User::class;
 
-
     /**
      * Define the model's default state.
      *
@@ -42,7 +41,7 @@ class UserFactory extends Factory
     public function unverified(): UserFactory
     {
         return $this->state(
-            state: fn(array $attributes): array => [
+            state: fn (array $attributes): array => [
                 'email_verified_at' => null,
             ],
         );

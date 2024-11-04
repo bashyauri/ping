@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
@@ -18,15 +20,17 @@ class Credential extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
     public function checks(): HasMany
     {
         return $this->hasMany(related: Check::class, foreignKey: 'credential_id');
     }
+
     protected function casts(): array
     {
         return [
             'type' => 'array',
-            'value' => 'encrypted'
+            'value' => 'encrypted',
         ];
     }
 }
