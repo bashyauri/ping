@@ -25,7 +25,7 @@ final class DatabaseSeeder extends Seeder
         ]);
         $service = Service::factory()->for($user)->create([
             'name' => 'Treblle Api',
-            'url' => 'https://api.treblle.com'
+            'url' => 'https://api.treblle.com',
         ]);
         Check::factory()->for($service)->count(10)->create(
             [
@@ -34,7 +34,7 @@ final class DatabaseSeeder extends Seeder
                 'method' => 'GET',
                 'headers' => [
                     'User-Agent' => 'Treblle Ping Service 1.0.0',
-                ]
+                ],
 
             ]
 

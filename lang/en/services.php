@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 return [
     'v1' => [
         'create' => [
@@ -18,6 +19,6 @@ return [
         'delete' => [
             'success' => 'Your service will be deleted in the background.',
             'failure' => 'You cannot delete a service that you do not own.',
-        ]
+        ],
     ],
 ];

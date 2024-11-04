@@ -1,17 +1,12 @@
 <?php
 
-
-
-
 declare(strict_types=1);
-
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-
 Route::prefix('v1')->as('v1:')->group(static function (): void {
-    Route::get('/', fn() => response()->json(request()->route()))->middleware(['sunset:' . now()->subDays(3)]);
+    Route::get('/', fn () => response()->json(request()->route()))->middleware(['sunset:' . now()->subDays(3)]);
     Route::middleware(['throttle:api'])->group(
         static function (): void {
             Route::get('/user', static function (Request $request) {
@@ -31,7 +26,7 @@ Route::prefix('v1')->as('v1:')->group(static function (): void {
 });
 
 Route::prefix('v2')->as('v2:')->group(static function (): void {
-    Route::get('/', fn() => response()->json(request()->route()));
+    Route::get('/', fn () => response()->json(request()->route()));
     Route::middleware(['auth:sanctum', 'throttle:api'])->group(
         static function (): void {
             Route::get('/user', static function (Request $request) {
