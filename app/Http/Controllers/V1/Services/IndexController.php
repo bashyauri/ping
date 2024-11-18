@@ -19,23 +19,20 @@ final class IndexController
         // Cache all services for the current user
         Cache::forever(
             CacheKey::User_services->value . '_' . auth()->id(),
-            $cachedServices = Service::query()->where(
-                'user_id',
-                '=',
-                auth()->id(),
-            )->get(),
+            Service::query()->where('user_id', '=', auth()->id())->get(),
         );
 
+        // Create the query directly from the Service model
         $services = QueryBuilder::for(
-            $cachedServices,
+            Service::query() // Pass the query builder, not a collection
         )->allowedIncludes(
             includes: 'checks',
         )->allowedFilters(
             filters: ['url'],
-        )->getEloquentBuilder()->where(
+        )->where(
             'user_id',
             '=',
-            auth()->user()->id
+            auth()->user()->id()
         )->simplePaginate(
             perPage: config('app.pagination.limit')
         );
