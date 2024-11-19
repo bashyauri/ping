@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-use Illuminate\Http\Request;
 use App\Factories\ErrorFactory;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Foundation\Application;
 use App\Http\Middleware\SunsetMiddleware;
-use Treblle\Middlewares\TreblleMiddleware;
+use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
-use Treblle\SecurityHeaders\Http\Middleware\RemoveHeaders;
-use Treblle\SecurityHeaders\Http\Middleware\PermissionsPolicy;
-use Treblle\SecurityHeaders\Http\Middleware\SetReferrerPolicy;
-use Treblle\SecurityHeaders\Http\Middleware\ContentTypeOptions;
-use Treblle\SecurityHeaders\Http\Middleware\StrictTransportSecurity;
-use Treblle\SecurityHeaders\Http\Middleware\CertificateTransparencyPolicy;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
+use Treblle\Middlewares\TreblleMiddleware;
+use Treblle\SecurityHeaders\Http\Middleware\CertificateTransparencyPolicy;
+use Treblle\SecurityHeaders\Http\Middleware\ContentTypeOptions;
+use Treblle\SecurityHeaders\Http\Middleware\PermissionsPolicy;
+use Treblle\SecurityHeaders\Http\Middleware\RemoveHeaders;
+use Treblle\SecurityHeaders\Http\Middleware\SetReferrerPolicy;
+use Treblle\SecurityHeaders\Http\Middleware\StrictTransportSecurity;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -48,13 +48,13 @@ return Application::configure(basePath: dirname(__DIR__))
         //
     })
     ->withExceptions(function (Exceptions $exceptions) {
-        $exceptions->render(fn(UnprocessableEntityHttpException $exception, Request $request) => new JsonResponse(
+        $exceptions->render(fn (UnprocessableEntityHttpException $exception, Request $request) => new JsonResponse(
             data: $exception->getMessage(),
             status: 422,
             headers: [],
 
         ));
-        $exceptions->render(fn(Throwable $exception, Request $request) => ErrorFactory::create(
+        $exceptions->render(fn (Throwable $exception, Request $request) => ErrorFactory::create(
             exception: $exception,
             request: $request
         ));
