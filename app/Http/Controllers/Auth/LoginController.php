@@ -16,7 +16,7 @@ final class LoginController
         $request->authenticate();
         $token = auth()->user()?->createToken(name: 'api-auth');
         return new JsonResponse(data: [
-            'token' => $token->plainTextToken(),
+            'token' => $token->plainTextToken,
 
         ]);
     }
