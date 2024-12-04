@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 use Spatie\ResponseCache\Middlewares\CacheResponse;
 
 Route::post('/', StoreController::class)->name('store');
-Route::middleware([CacheResponse::class])->group(static function (): void {
+Route::middleware([])->group(static function (): void {
     Route::get('/', IndexController::class)->name('index');
     Route::get('{ulid}', ShowController::class)->name('show');
 });

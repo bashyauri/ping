@@ -19,24 +19,26 @@ final class IndexController
         // Cache all services for the current user
         Cache::forever(
             CacheKey::User_services->value . '_' . auth()->id(),
-            Service::query()->where('user_id', '=', auth()->id())->get(),
+            $cachedServices = Service::query()->where('user_id', '=', auth()->id())->pluck('id')->toArray(),
         );
 
         // Create the query directly from the Service model
         $services = QueryBuilder::for(
-            Service::query() // Pass the query builder, not a collection
+            Service::query()->whereIn(
+                column: 'id',
+                values: $cachedServices,
+            ), // Pass the query builder, not a collection
         )->allowedIncludes(
-            includes: 'checks',
+            includes: ['checks'],
         )->allowedFilters(
             filters: ['url'],
         )->where(
             'user_id',
             '=',
-            auth()->user()->id()
+            auth()->id()
         )->simplePaginate(
             perPage: config('app.pagination.limit')
         );
-
         return new JsonResponse(
             data: ServiceResource::collection(resource: $services),
         );
